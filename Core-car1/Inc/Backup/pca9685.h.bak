@@ -1,0 +1,9 @@
+#ifndef INC_PCA9685_H_
+#define INC_PCA9685_H_
+
+#include "main.h"
+
+void PCA9685_Init(void);
+void PCA9685_SetPWM(uint8_t ch, uint16_t off);
+
+#endif

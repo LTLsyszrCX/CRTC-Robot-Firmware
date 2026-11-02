@@ -1,0 +1,53 @@
+#ifndef INC_PS2_PS2_H_
+#define INC_PS2_PS2_H_
+
+#include "main.h"
+
+#define MOSI_GPIO_Port GPIOB
+#define MOSI_Pin       GPIO_PIN_14
+
+#define MISO_GPIO_Port GPIOB
+#define MISO_Pin       GPIO_PIN_15
+
+#define SCK_GPIO_Port  GPIOB
+#define SCK_Pin        GPIO_PIN_13
+
+#define SS_GPIO_Port   GPIOB
+#define SS_Pin         GPIO_PIN_12
+
+typedef struct {
+	uint8_t SELECT;
+	uint8_t L3;
+	uint8_t R3;
+	uint8_t START;
+	uint8_t UP;
+	uint8_t RIGHT;
+	uint8_t DOWN;
+	uint8_t LEFT;
+	uint8_t L2;
+	uint8_t R2;
+	uint8_t L1;
+	uint8_t R1;
+	uint8_t TRIANGLE;
+	uint8_t CIRCLE;
+	uint8_t CROSS;
+	uint8_t SQUARE;
+	uint8_t RX;
+	uint8_t RY;
+	uint8_t LX;
+	uint8_t LY;
+} PS2Buttons;
+
+extern volatile uint8_t ps2_valid;
+
+void delay_us(uint16_t);
+uint8_t PS2_SendByte(uint8_t);
+void PS2_Cmd(uint8_t *, uint8_t *, uint8_t );
+void PS2_Poll(void);
+void PS2_EnterConfig(void);
+void PS2_AnalogMode(void);
+void PS2_ExitConfig(void);
+void PS2_Init(TIM_HandleTypeDef*, PS2Buttons*);
+void PS2_Update(void);
+
+#endif
